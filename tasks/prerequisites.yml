@@ -1,0 +1,11 @@
+---
+
+- name: fail unless we run on a supported distribution
+  fail: >
+    msg="Unfortunately, the 'nodejs'-role is not supported on {{ ansible_distribution_release }}! :-("
+  when: ansible_distribution_release|lower not in nodejs_supported_distribution_releases
+
+- name: install apt-transport-https
+  apt: >
+    name=apt-transport-https
+    state=present
