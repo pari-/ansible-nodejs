@@ -9,6 +9,11 @@ nodejs_supported_distribution_releases:
   - "trusty"
   - "xenial"
   - "yakkety"
+
+nodejs_prerequisites_apt_update_cache: "yes"
+nodejs_prerequisites_apt_cache_valid_time: 3600
+nodejs_prerequisites_apt_state: "present"
+
 nodejs_install_version: ""
 nodejs_install_apt_key_id: ""
 nodejs_install_apt_key_url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"

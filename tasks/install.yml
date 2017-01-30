@@ -15,7 +15,7 @@
   apt: >
     name="{{ item }}"
     state=present
-    update_cache="{{ nodejs_install_apt_update_cache }}"
-    cache_valid_time="{{ nodejs_install_apt_cache_valid_time }}"
+    update_cache="{{ nodejs_install_apt_update_cache|default(omit) }}"
+    cache_valid_time="{{ nodejs_install_apt_cache_valid_time|default(omit) }}"
   with_items:
     - "{{ nodejs_install_package_list }}"
