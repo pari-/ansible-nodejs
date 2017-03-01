@@ -2,6 +2,19 @@
 
 An Ansible role which installs and configures NodeJS from NodeSource.
 
+<!-- toc -->
+
+- [Requirements](#requirements)
+- [Example](#example)
+- [Variables](#variables)
+  * [Role Variables](#role-variables)
+  * [Role Internals](#role-internals)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author Information](#author-information)
+
+<!-- tocstop -->
+
 ## Requirements
 
 Currently this role is developed for and tested on Debian GNU/Linux (release: jessie). It is assumed to work on other Debian distributions as well.
@@ -18,7 +31,7 @@ Ansible version in use for development: 2.2.1
     nodejs_apt_key_id: "68576280"
 
   roles:
-     - { role: ansible-nodejs }
+     - "ansible-nodejs"
 ```
 
 ## Variables
