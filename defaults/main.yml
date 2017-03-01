@@ -1,25 +1,11 @@
 ---
 
-nodejs_supported_distribution_releases:
-  - "wheezy"
+nodejs_supported_distro_releases:
   - "jessie"
-  - "stretch"
-  - "sid"
-  - "precise"
-  - "trusty"
-  - "xenial"
-  - "yakkety"
-
-nodejs_prerequisites_apt_update_cache: "yes"
-nodejs_prerequisites_apt_cache_valid_time: 3600
-nodejs_prerequisites_apt_state: "present"
-
-nodejs_install_version: ""
-nodejs_install_apt_key_id: ""
-nodejs_install_apt_key_url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
-nodejs_install_apt_repository_repo: "deb https://deb.nodesource.com/{{ nodejs_install_version }} {{ ansible_distribution_release|lower }} main"
-nodejs_install_apt_repository_validate_certs: "no"
-nodejs_install_apt_update_cache: "yes"
-nodejs_install_apt_cache_valid_time: "3600"
-nodejs_install_package_list:
+nodejs_apt_key_url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+nodejs_repo: "deb https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_distribution_release|lower }} main"
+nodejs_repo_validate_certs: "no"
+nodejs_update_cache: "yes"
+nodejs_cache_valid_time: "3600"
+nodejs_package_list:
   - nodejs

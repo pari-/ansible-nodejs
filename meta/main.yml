@@ -1,3 +1,11 @@
 ---
 
-dependencies: []
+galaxy_info:
+  author: "Patrick Ringl"
+  description: "An Ansible role which installs and configures NodeJS from NodeSource"
+  license: "MIT"
+  galaxy_tags:
+    - "nodejs"
+    - "node"
+    - "nodesource"
+  dependencies: []

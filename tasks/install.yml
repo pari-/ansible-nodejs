@@ -1,21 +1,21 @@
 ---
 - name: add apt_key file
   apt_key: >
-    id="{{ nodejs_install_apt_key_id }}"
-    url="{{ nodejs_install_apt_key_url }}"
+    id="{{ nodejs_apt_key_id }}"
+    url="{{ nodejs_apt_key_url }}"
     state=present
 
 - name: add apt_repository
   apt_repository: >
-    repo="{{ nodejs_install_apt_repository_repo }}"
+    repo="{{ nodejs_repo }}"
     state=present
-    validate_certs="{{ nodejs_install_apt_repository_validate_certs }}"
+    validate_certs="{{ nodejs_repo_validate_certs }}"
 
 - name: install apt package
   apt: >
     name="{{ item }}"
     state=present
-    update_cache="{{ nodejs_install_apt_update_cache|default(omit) }}"
-    cache_valid_time="{{ nodejs_install_apt_cache_valid_time|default(omit) }}"
+    update_cache="{{ nodejs_update_cache|default(omit) }}"
+    cache_valid_time="{{ nodejs_cache_valid_time|default(omit) }}"
   with_items:
-    - "{{ nodejs_install_package_list }}"
+    - "{{ nodejs_package_list }}"
