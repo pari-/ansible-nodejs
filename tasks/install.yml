@@ -14,8 +14,9 @@
 - name: install apt package
   apt: >
     name="{{ item }}"
-    state=present
+    state="{{ nodejs_packages_state }}"
     update_cache="{{ nodejs_update_cache|default(omit) }}"
     cache_valid_time="{{ nodejs_cache_valid_time|default(omit) }}"
+    default_release="{{ nodejs_default_release }}"
   with_items:
     - "{{ nodejs_package_list }}"
