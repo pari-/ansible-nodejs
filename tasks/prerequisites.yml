@@ -1,16 +1,16 @@
 ---
 
 - name: fail unless we run on a supported distribution
-  fail: >
-    msg="Unfortunately, the 'nodejs'-role is not supported on {{ ansible_distribution_release }}! :-("
+  fail:
+    msg: "Unfortunately, the 'nodejs'-role is not supported on {{ ansible_distribution_release }}! :-("
   when: ansible_distribution_release|lower not in nodejs_supported_distro_releases
 
 - name: fail unless mandatory variables are set
-  fail: >
-    msg="Please specify nodejs_version and nodejs_apt_key_id"
+  fail:
+    msg: "Please specify nodejs_version and nodejs_apt_key_id"
   when: ((nodejs_version is not defined or not nodejs_version) or (nodejs_apt_key_id is not defined or not nodejs_apt_key_id))
 
 - name: install apt-transport-https
-  apt: >
-    name=apt-transport-https
-    state=present
+  apt:
+    name: apt-transport-https
+    state: present
