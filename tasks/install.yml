@@ -2,7 +2,7 @@
 - name: add apt_key file
   apt_key:
     id: "{{ nodejs_apt_key_id }}"
-    url: "{{ nodejs_apt_key_url }}"
+    keyserver: "{{ nodejs_apt_key_keyserver }}"
     state: present
 
 - name: add apt_repository

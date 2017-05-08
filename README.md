@@ -1,5 +1,7 @@
 # nodejs
 
+[![Build Status](https://travis-ci.org/pari-/ansible-nodejs.svg?branch=master)](https://travis-ci.org/pari-/ansible-nodejs)
+
 An Ansible role which installs and configures NodeJS from NodeSource.
 
 <!-- toc -->
@@ -19,7 +21,12 @@ An Ansible role which installs and configures NodeJS from NodeSource.
 
 Currently this role is developed for and tested on Debian GNU/Linux (release: jessie). It is assumed to work on other Debian distributions as well.
 
-Ansible version in use for development: 2.2.1
+Ansible version compatibility:
+
+- __2.3.0__ (current version in use for development of this role)
+- 2.2.2
+- 2.1.5
+- 2.0.2
 
 ## Example
 
@@ -49,7 +56,7 @@ variable | default | notes
 
 variable | default | notes
 -------- | ------- | -----
-`apt_key_url` | `https://deb.nodesource.com/gpgkey/nodesource.gpg.key` | `The url to retrieve the apt-key for the NodeSource repository from`
+`apt_key_keyserver` | `keyserver.ubuntu.com` | `The keyserver to retrieve the apt-key for the NodeSource repository from`
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
 `package_list` | `['nodejs']` | `The list of packages to be installed`
 `repo` | `deb https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_distribution_release|lower }} main` | `A source string for the NodeSource repository`

@@ -4,12 +4,13 @@
 # prerequisites
 #
 nodejs_supported_distro_releases:
+  - "trusty"
   - "jessie"
 
 #
 # install
 #
-nodejs_apt_key_url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+nodejs_apt_key_keyserver: "keyserver.ubuntu.com"
 nodejs_repo: "deb https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_distribution_release|lower }} main"
 nodejs_repo_validate_certs: "no"
 nodejs_packages_state: "present"
@@ -17,4 +18,4 @@ nodejs_package_list:
   - "nodejs"
 nodejs_update_cache: "yes"
 nodejs_cache_valid_time: "3600"
-nodejs_default_release: "jessie"
+nodejs_default_release: "{{ ansible_distribution_release }}"
