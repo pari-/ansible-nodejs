@@ -3,14 +3,12 @@
 - name: fail unless we run on a supported distribution
   fail:
     msg: "Unfortunately, the 'nodejs'-role is not supported on {{ ansible_distribution_release }}! :-("
-  when: ansible_distribution_release|lower not in nodejs_supported_distro_releases
+  when: ansible_distribution_release|lower not in nodejs_supported_distro_list
 
-- name: fail unless mandatory variables are set
-  fail:
-    msg: "Please specify nodejs_version and nodejs_apt_key_id"
-  when: ((nodejs_version is not defined or not nodejs_version) or (nodejs_apt_key_id is not defined or not nodejs_apt_key_id))
-
-- name: install apt-transport-https
+- name: install prerequisite packages
   apt:
-    name: apt-transport-https
+    default_release: "{{ nodejs_pre_default_release }}"
+    name: "{{ item }}"
     state: present
+  with_items:
+    - "{{ nodejs_pre_package_list }}"

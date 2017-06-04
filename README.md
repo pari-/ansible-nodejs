@@ -2,15 +2,13 @@
 
 [![Build Status](https://travis-ci.org/pari-/ansible-nodejs.svg?branch=master)](https://travis-ci.org/pari-/ansible-nodejs)
 
-An Ansible role which installs and configures NodeJS from NodeSource.
+An Ansible role which installs and configures NodeJS from NodeSource
 
 <!-- toc -->
 
 - [Requirements](#requirements)
 - [Example](#example)
-- [Variables](#variables)
-  * [Role Variables](#role-variables)
-  * [Role Internals](#role-internals)
+- [Role Variables](#role-variables)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author Information](#author-information)
@@ -23,50 +21,45 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: je
 
 Ansible version compatibility:
 
-- __2.3.0__ (current version in use for development of this role)
-- 2.2.2
-- 2.1.5
-- 2.0.2
+- __2.3.1.0__ (current version in use for development of this role) 
+- 2.2.3.0
+- 2.1.6.0
+- 2.0.2.0
 
 ## Example
 
 ```yaml
-- hosts: nodejs-servers
+---
+
+- hosts: "{{ hosts_group | default('all') }}"
 
   vars:
-    nodejs_version: "node_7.x"
-    nodejs_apt_key_id: "68576280"
 
   roles:
-     - "ansible-nodejs"
+    - { role: "{{ role_name | default('ansible-nodejs') }}", tags: ['nodejs'] }
+
 ```
 
-## Variables
+## Role Variables
 
 Available variables are listed below, along with default values (see defaults/main.yml). They're generally prefixed with `nodejs_` (which I deliberately leave out here for better formatting).
 
-### Role Variables
-
 variable | default | notes
 -------- | ------- | -----
-`apt_key_id` | `68576280` | `The identifier for the key of the NodeSource repository. Including this allows check mode to correctly report the changed state`
-`version` | `node_7.x` | `The to-be-installed "NodeJS"-version from NodeSource i.e. 5.x, 6.x or 7.x`
-
-### Role Internals
-
-variable | default | notes
--------- | ------- | -----
-`apt_key_keyserver` | `keyserver.ubuntu.com` | `The keyserver to retrieve the apt-key for the NodeSource repository from`
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
+`default_release` | `jessie` | `The default release to install packages from`
 `package_list` | `['nodejs']` | `The list of packages to be installed`
-`repo` | `deb https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_distribution_release|lower }} main` | `A source string for the NodeSource repository`
-`repo_validate_certs` | `no` | `If no, SSL certificates for the NodeSource repository will not be validated`
-`supported_distro_releases` | `['jessie']` | `A list of distribution releases this role supports`
+`pre_default_release` | `{{ nodejs_default_release }}` | `The default release to install packages (pre_package_list) from`
+`pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
+`repo_list[0]['repo']` | `deb https://deb.nodesource.com/{{ nodejs_version }} {{ nodejs_default_release }} main` | `Source string for the repositories`
+`repo_list[0]['repo']['key']['id']` | `68576280` | `Identifier of (the repository) key`
+`repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from`
+`supported_distro_list` | `['jessie']` | `A list of distribution releases this role supports`
 `update_cache` | `yes` | `Run the equivalent of apt-get update before the operation`
 
 ## Dependencies
 
-None.
+None
 
 ## License
 

@@ -1,7 +1,7 @@
 ---
 
 - include: prerequisites.yml
-  tags: ['prerequisites']
+  tags: [ 'prerequisites']
 
 - include: install.yml
-  tags: ['install']
+  tags: [ 'install']
