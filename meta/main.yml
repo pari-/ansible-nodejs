@@ -4,7 +4,7 @@ galaxy_info:
   author: "Patrick Ringl"
   description: "An Ansible role which installs and configures NodeJS from NodeSource"
   license: "MIT"
-  min_ansible_version: ""
+  min_ansible_version: "2.0.2.0"
   galaxy_tags:
     - "nodejs"
     - "node"
