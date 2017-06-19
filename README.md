@@ -17,7 +17,7 @@ An Ansible role which installs and configures NodeJS from NodeSource
 
 ## Requirements
 
-Currently this role is developed for and tested on Debian GNU/Linux (release: jessie). It is assumed to work on other Debian distributions as well.
+Currently this role is developed for and tested on Debian GNU/Linux (release: stretch). It is assumed to work on other Debian distributions as well.
 
 Ansible version compatibility:
 
@@ -49,12 +49,12 @@ variable | default | notes
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
 `default_release` | `jessie` | `The default release to install packages from`
 `package_list` | `['nodejs']` | `The list of packages to be installed`
-`pre_default_release` | `{{ nodejs_default_release }}` | `The default release to install packages (pre_package_list) from`
+`pre_default_release` | `{{ ansible_distribution_release|lower }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
 `repo_list[0]['repo']` | `deb https://deb.nodesource.com/{{ nodejs_version }} {{ nodejs_default_release }} main` | `Source string for the repositories`
 `repo_list[0]['repo']['key']['id']` | `68576280` | `Identifier of (the repository) key`
 `repo_list[0]['repo']['key']['keyserver']` | `keyserver.ubuntu.com` | `Keyserver to retrieve the key (for the repository) from`
-`supported_distro_list` | `['jessie']` | `A list of distribution releases this role supports`
+`supported_distro_list` | `['jessie', 'stretch']` | `A list of distribution releases this role supports`
 `update_cache` | `yes` | `Run the equivalent of apt-get update before the operation`
 
 ## Dependencies

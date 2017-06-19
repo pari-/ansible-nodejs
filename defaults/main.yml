@@ -1,10 +1,10 @@
 ---
 
 nodejs_cache_valid_time: 3600
-nodejs_default_release: "jessie"
+nodejs_default_release: "jessie" # this will be properly fixed, once the nodesource repos offer explicit stretch packages
 nodejs_package_list:
   - "nodejs"
-nodejs_pre_default_release: "{{ nodejs_default_release }}"
+nodejs_pre_default_release: "{{ ansible_distribution_release|lower }}"
 nodejs_pre_package_list:
   - "apt-transport-https"
   - "ca-certificates"
@@ -15,5 +15,6 @@ nodejs_repo_list:
       keyserver: "keyserver.ubuntu.com"
 nodejs_supported_distro_list:
   - "jessie"
+  - "stretch"
 nodejs_update_cache: "yes"
 nodejs_version: "node_7.x"
