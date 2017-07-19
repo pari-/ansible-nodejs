@@ -17,4 +17,4 @@ nodejs_supported_distro_list:
   - "jessie"
   - "stretch"
 nodejs_update_cache: "yes"
-nodejs_version: "node_7.x"
+nodejs_version: "node_8.x"
