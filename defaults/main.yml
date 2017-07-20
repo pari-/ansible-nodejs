@@ -1,7 +1,7 @@
 ---
 
 nodejs_cache_valid_time: 3600
-nodejs_default_release: "jessie" # this will be properly fixed, once the nodesource repos offer explicit stretch packages
+nodejs_default_release: "{{ ansible_distribution_release|lower }}"
 nodejs_package_list:
   - "nodejs"
 nodejs_pre_default_release: "{{ ansible_distribution_release|lower }}"
