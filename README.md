@@ -21,7 +21,7 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: st
 
 Ansible version compatibility:
 
-- __2.3.1.0__ (current version in use for development of this role) 
+- __2.3.2.0__ (current version in use for development of this role) 
 - 2.2.3.0
 - 2.1.6.0
 - 2.0.2.0
@@ -47,7 +47,7 @@ Available variables are listed below, along with default values (see defaults/ma
 variable | default | notes
 -------- | ------- | -----
 `cache_valid_time` | `3600` | `Update the apt cache if its older than the set value (in seconds)`
-`default_release` | `jessie` | `The default release to install packages from`
+`default_release` | `{{ ansible_distribution_release|lower }}` | `The default release to install packages from`
 `package_list` | `['nodejs']` | `The list of packages to be installed`
 `pre_default_release` | `{{ ansible_distribution_release|lower }}` | `The default release to install packages (pre_package_list) from`
 `pre_package_list` | `['apt-transport-https','ca-certificates']` | `The list of prerequisite packages to be installed`
