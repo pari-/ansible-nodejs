@@ -4,7 +4,7 @@ nodejs_cache_valid_time: 3600
 nodejs_default_release: "{{ ansible_distribution_release|lower }}"
 nodejs_package_list:
   - "nodejs"
-nodejs_pre_default_release: "{{ ansible_distribution_release|lower }}"
+nodejs_pre_default_release: "{{ nodejs_default_release }}"
 nodejs_pre_package_list:
   - "apt-transport-https"
   - "ca-certificates"
