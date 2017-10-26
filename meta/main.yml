@@ -2,8 +2,8 @@
 
 galaxy_info:
   author: "Patrick Ringl"
-  description: "An Ansible role which installs and configures NodeJS from NodeSource"
   dependencies: []
+  description: "An Ansible role which installs and configures NodeJS from NodeSource"
   galaxy_tags:
     - "nodejs"
     - "node"
