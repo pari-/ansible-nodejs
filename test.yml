@@ -5,3 +5,8 @@
     - role: "ansible-nodejs"
       tags:
         - "nodejs"
+  post_tasks:
+    - block:
+        - include: "tests/test_installed_nodejs_version.yml"
+      tags:
+        - "tests"

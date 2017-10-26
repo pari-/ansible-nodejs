@@ -21,7 +21,7 @@ Currently this role is developed for and tested on Debian GNU/Linux (release: st
 
 Ansible version compatibility:
 
-- __2.4.0.0__ (current version in use for development of this role) 
+- __2.4.1.0__ (current version in use for development of this role)
 - 2.3.2.0
 - 2.2.3.0
 - 2.1.6.0
@@ -36,6 +36,11 @@ Ansible version compatibility:
     - role: "ansible-nodejs"
       tags:
         - "nodejs"
+  post_tasks:
+    - block:
+        - include: "tests/test_installed_nodejs_version.yml"
+      tags:
+        - "tests"
 ```
 
 ## Defaults
