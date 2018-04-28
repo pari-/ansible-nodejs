@@ -14,7 +14,6 @@ nodejs_repo_list:
       id: "68576280"
       keyserver: "keyserver.ubuntu.com"
 nodejs_supported_distro_list:
-  - "jessie"
   - "stretch"
 nodejs_update_cache: "yes"
-nodejs_version: "node_8.x"
+nodejs_version: "node_10.x"
