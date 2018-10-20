@@ -1,13 +1,13 @@
 ---
 
-- name: "retrieve installed NodeJS version"
+- name: "Fetrieve installed NodeJS version"
   command: |
     node -p "'node_' + Number(process.version.match(/^v([0-9]+).*$/)[1]) + '.x'"
   register: "_result"
   changed_when: False
 
-- name: "fail when installed NodeJS version does not match the expected one"
-  fail:
-    msg: "NodeJS version: {{ _result.stdout }} != {{ nodejs_version }}"
+- name: "Fail when installed NodeJS version does not match the expected one"
   when:
     - "_result.stdout != nodejs_version"
+  fail:
+    msg: "NodeJS version: {{ _result.stdout }} != {{ nodejs_version }}"
