@@ -6,8 +6,6 @@ nodejs_package_list:
   - "nodejs"
 nodejs_pre_default_release: "{{ nodejs_default_release }}"
 nodejs_pre_package_list:
-  - "apt-transport-https"
-  - "ca-certificates"
 nodejs_repo_list:
   - repo: "deb https://deb.nodesource.com/{{ nodejs_version }} {{ nodejs_default_release }} main"
     key:
